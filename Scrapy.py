@@ -37,7 +37,9 @@ class Scrapper:
         """
         size = len(links)
         for i in range(size):
-            pass
+            if file_extent not in links[i]:
+                links.remove(links[i])
+        return links
 
 
     def retrieve_urls(self, links):
