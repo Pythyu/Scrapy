@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib.request
 import traceback
+import sys
 
 class Scrapper:
 
@@ -75,9 +76,20 @@ class Scrapper:
 
 # Main
 if __name__ == "__main__":
+    argc = len(sys.argv)
+    if argc <= 1:
+        scrap = Scrapper("http://index-of.es/Attacks/403%20Forbidden%20Attack/", "data")
 
-    scrap = Scrapper("http://index-of.es/Attacks/403%20Forbidden%20Attack/", "data")
+        links = scrap.scrap_links_in_url()
 
-    links = scrap.scrap_links_in_url()
+        scrap.retrieve_urls(links)
+    elif argc != 3:
+        print("usage : ./python3 Scrapy.py <url> <folder>")
+        print("   > url: String of the targeted website")
+        print("   > folder: Folder where link's content will be stored")
+    else:
+        scrap = Scrapper(sys.argv[1], sys.argv[2])
 
-    scrap.retrieve_urls(links)
+        links = scrap.scrap_links_in_url()
+
+        scrap.retrieve_urls(links)
