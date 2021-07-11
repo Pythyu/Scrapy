@@ -29,6 +29,17 @@ class Scrapper:
         soup = BeautifulSoup(page_content, "html.parser")
         return [link["href"] for link in soup.find_all("a", href=True)]
 
+    def filter_only_file_extention(self, links, file_extent):
+        """
+        :param links: List of all link to filter
+        :param file_extent: required extention file to have
+        :return List of string corresponding to all links in the webpage filtered
+        """
+        size = len(links)
+        for i in range(size):
+            pass
+
+
     def retrieve_urls(self, links):
         """
 
@@ -68,6 +79,3 @@ if __name__ == "__main__":
     links = scrap.scrap_links_in_url()
 
     scrap.retrieve_urls(links)
-
-
-
