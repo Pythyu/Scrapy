@@ -4,7 +4,7 @@ A basic link scrapper and retriever
 
 ## Installation
 
-```shell
+```
 pip install -r requirements.txt
 ```
 
@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ### Working Sample
 
-```python
+```
 python3 Scrapy.py
 ```
 
@@ -20,7 +20,7 @@ It will fill the data folder with pdf from a pre-filled website
 
 ### Integration in your own code
 
-```python
+```
 from Scrapy import Scrapper
 
 # Decalre the scrapper Object
