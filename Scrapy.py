@@ -17,6 +17,35 @@ class Scrapper:
         self.folder = folder
         self.session = requests.Session()
 
+    def basic_soup(self):
+        """
+
+        Basic BeautifulSoup scraper without any specification
+
+        """
+        #Scrap content
+        content = self.session.get(self.url).content
+        soup = BeautifulSoup(content, "html.parser")
+        return soup
+
+
+    def scrap_login_csrf(self,login_url,login_information):
+        """
+
+        Allow to scrap a website based on a specific csrf TOKEN to bypass login restriction
+
+        :param login_url : String > login page url
+        :param login_information: Dictionary > login payload
+        """
+
+        #Identify the client to the website via the payload
+        self.post(login_url, data=login_information)
+        #Scrap content
+        content = self.session.get(self.url).content
+        soup = BeautifulSoup(content, "html.parser")
+        return soup
+
+
     def scrap_links_in_url(self):
         """
 
